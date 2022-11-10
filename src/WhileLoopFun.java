@@ -4,7 +4,9 @@ public class WhileLoopFun {
      or this simple no-parameter constructor, which is actually preferred practice
      over omitting the constructor entirely
      */
-    public WhileLoopFun() { }
+    public WhileLoopFun() {
+
+    }
 
     /**Prints the individual digits in number separately, starting with the rightmost digit first, on separate lines.
      Example:  If number is 361, this methods prints 1, then 6, then 3 (on separate lines)
@@ -12,6 +14,11 @@ public class WhileLoopFun {
      lines)
      */
     public void printDigits(int number) {
+        while (number > 0) {
+            int num = number % 10;
+            System.out.println(num);
+            number /= 10;
+        }
     }
 
     /** Returns the number of times letter occurs in word.
@@ -23,6 +30,17 @@ public class WhileLoopFun {
      try it this time using a while loop!
      */
     public int countLetter(String word, String letter) {
+        int i = 0;
+        int count = 0;
+        String temp;
+        while (i != (word.length())) {
+            temp = (word.charAt(i) + "");
+            if (temp.equals(letter)) {
+                count++;
+            }
+            i++;
+        }
+        return count;
     }
 
     /**Returns the maximum number of times that number can be doubled before it exceeds threshold
@@ -47,6 +65,12 @@ public class WhileLoopFun {
      Precondition: number > 0, threshold > 0
      */
     public int maxDoubles(int number, int threshold) {
+        int count = 0;
+        while ((number * 2) <= threshold) {
+            number *= 2;
+            count++;
+        }
+        return count;
     }
 
     /**Returns true if number is prime (i.e. it has exactly two divisors: 1 and itself) and false
@@ -62,5 +86,22 @@ public class WhileLoopFun {
      but 1 has only a single divisor! (don’t believe it? Google it!)
      */
     public boolean isPrime(int number) {
+        int div = 2;
+        int totalNum = 0;
+        if (number == 1) {
+            return false;
+        }
+        while (div < number / 2) {
+            if (number % div == 0) {
+                totalNum++;
+                break;
+            }
+            div++;
+        }
+        if (totalNum == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
